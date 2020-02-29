@@ -4,16 +4,23 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import LoginPwd from './components/LoginPwd';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faCoffee } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faAngleLeft, faCoffee)
 
 
 function App() {
   return (<Router>
     <div className="App">
-      <div className="auth-wrapper">
-        <div className="auth-inner">
+      <div className="wrapper">
+        <div className="inner-block">
           <Switch>
             <Route exact path='/' component={Login} />
             <Route path="/sign-in" component={Login} />
+            <Route path="/log-in" component={LoginPwd} />
             <Route path="/sign-up" component={SignUp} />
           </Switch>
         </div>

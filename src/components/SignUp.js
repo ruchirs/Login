@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import Footer from './Footer'
+import { Link } from "react-router-dom";
 
 export default class SignUp extends Component {
     render() {
         return (
+            <div className="container">
             <form>
                 <h3>Create account</h3>
 
-                <div class="row">
+                <div className="row align">
                     <div className="form-group col-md-6">
                         <label>First name</label>
                         <input type="text" className="form-control" />
@@ -40,9 +43,11 @@ export default class SignUp extends Component {
 
                 <button type="submit" className="btn btn-primary btn-block">Create account</button>
                 <p className="forgot-password text-center">
-                    Already have an account? <a href="#">Sign in</a>
+                    Already have an account? <Link to="sign-in">Sign in</Link>
                 </p>
             </form>
+            <Footer />
+            </div>
         );
     }
 }

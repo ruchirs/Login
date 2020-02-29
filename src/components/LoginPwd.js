@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Footer from './Footer'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default class Login extends Component {
+export default class LoginPwd extends Component {
 
     constructor(props) {
         super()
         this.state = {
             username: '',
-            labelText: 'Next'
+            labelText: 'Sign in'
         }
     }
 
@@ -16,24 +17,24 @@ export default class Login extends Component {
         this.setState({
             labelText: 'Verifying'
         })
-        this.props.history.push('/log-in');
+        this.props.history.push('/sign-up');
     }
 
     render() {
         return (
             <div className="container p-0">
             <form>
-                <h3>Sign In</h3>
+                <Link to="/sign-in">
+                <FontAwesomeIcon icon="angle-left" size="2x" color="#0696d7" style={{position: "absolute"}}/>
+                </Link>
+                <h3 className="text-center">Welcome</h3>
 
                 <div className="form-group">
-                    <label>Username</label>
-                    <input type="email" className="form-control" placeholder="Enter Username" />
+                    <label>Password</label>
+                    <input type="password" className="form-control" placeholder="Enter Username" />
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block" onClick={this.submitHandler}>{this.state.labelText}</button>
-                <p className="forgot-password text-center">
-                    New to Autodesk? <Link to="sign-up">Create account</Link>
-                </p>
                 </form>
                 <Footer />
             </div>
