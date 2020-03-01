@@ -12,11 +12,6 @@ body {
   color: #3c3c3c;
 }
 
-h1,h2,h4,h5,h6,span {
-  font-weight: 500;
-  font-family: 'Fira Sans', sans-serif;
-}
-
 body, html, .App, #root, .wrapper {
   width: 100%;
   height: 100%;
@@ -86,6 +81,23 @@ body, html, .App, #root, .wrapper {
   left:0;
   bottom:12px;
   right:0;
+}
+
+.invalidInput {
+  font-size: 14px;
+  line-height: 20px;
+  color: #666666;
+  background-color: #dcdcdc;
+  display: block;
+  padding: 8px;
+  border-radius: 0px 0px 5px 5px;
+  margin-top: 0px;
+}
+
+.usernameStyle {
+  font-size: 14px;
+  line-height: 20px;
+  color: #808080;
 }
 
 @media only screen and (max-width: 600px) {

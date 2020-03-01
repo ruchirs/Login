@@ -16,21 +16,27 @@ export default class Login extends Component {
         this.setState({
             labelText: 'Verifying'
         })
-        this.props.history.push('/log-in');
+        this.props.history.push({pathname: '/log-in', state: {name: this.state.username}});
+    }
+
+    usernameChanged = (e) => {
+        this.setState({
+            username: e.target.value
+        })
     }
 
     render() {
         return (
             <div className="container p-0">
-            <form>
+            <form onSubmit={this.submitHandler}>
                 <h3>Sign In</h3>
 
                 <div className="form-group">
                     <label>Username</label>
-                    <input type="email" className="form-control" placeholder="Enter Username" />
+                    <input type="text" className="form-control" placeholder="Enter Username" onChange={(e) => this.usernameChanged(e)}/>
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block" onClick={this.submitHandler}>{this.state.labelText}</button>
+                <button type="submit" className="btn btn-primary btn-block">{this.state.labelText}</button>
                 <p className="forgot-password text-center">
                     New to Autodesk? <Link to="sign-up">Create account</Link>
                 </p>

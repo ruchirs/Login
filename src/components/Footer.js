@@ -7,7 +7,7 @@ export default class Footer extends Component {
             <div className="footer">
                 <p className="forgot-password text-center">
                     Your account for everything Autodesk <br/>
-                    <a href="#">Learn more</a>
+                    <a href="/">Learn more</a>
                 </p>
             </div>
         )

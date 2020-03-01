@@ -21,17 +21,20 @@ export default class LoginPwd extends Component {
     }
 
     render() {
+        console.log('this.props', this.props);
+        
         return (
             <div className="container p-0">
             <form>
                 <Link to="/sign-in">
                 <FontAwesomeIcon icon="angle-left" size="2x" color="#0696d7" style={{position: "absolute"}}/>
                 </Link>
-                <h3 className="text-center">Welcome</h3>
+                <h3 className="text-center p-0">Welcome</h3>
+                <p className="usernameStyle text-center">{this.props.location.state.name}</p>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter Username" />
+                    <input type="password" className="form-control" placeholder="Enter Password" />
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block" onClick={this.submitHandler}>{this.state.labelText}</button>
