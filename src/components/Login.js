@@ -8,7 +8,26 @@ export default class Login extends Component {
         super()
         this.state = {
             username: '',
-            labelText: 'Next'
+            labelText: 'Next',
+            showToast: false
+        }
+    }
+
+    componentDidMount () {
+        let state = this.props.location.state
+        console.log('state', state)
+        if(state){
+            if(state.successful === true) {
+            this.setState({
+                showToast: true
+            })
+
+            setTimeout(() => {
+                this.setState({ showToast: false }, () => {
+                    this.props.location.state.successful = false
+                });
+              }, 5000);
+            }
         }
     }
 
@@ -16,7 +35,7 @@ export default class Login extends Component {
         this.setState({
             labelText: 'Verifying'
         })
-        this.props.history.push({pathname: '/log-in', state: {name: this.state.username}});
+        this.props.history.push({pathname: '/log-in', state: {name: this.state.username?this.state.username:this.props.location.state.name}});
     }
 
     usernameChanged = (e) => {
@@ -26,14 +45,21 @@ export default class Login extends Component {
     }
 
     render() {
+        console.log('this.props', this.props);
         return (
             <div className="container p-0">
+            { this.state.showToast && 
+                <p className="toast-message">Account Created Successfully</p>
+            }
             <form onSubmit={this.submitHandler}>
                 <h3>Sign In</h3>
 
                 <div className="form-group">
                     <label>Username</label>
-                    <input type="text" className="form-control" placeholder="Enter Username" onChange={(e) => this.usernameChanged(e)}/>
+                    <input type="text" className="form-control"
+                     placeholder="Enter Username" 
+                     value={this.state.username?this.state.username:(this.props.location.state?this.props.location.state.name:'')}
+                     onChange={(e) => this.usernameChanged(e)}/>
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block">{this.state.labelText}</button>

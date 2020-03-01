@@ -17,7 +17,7 @@ export default class LoginPwd extends Component {
         this.setState({
             labelText: 'Verifying'
         })
-        this.props.history.push('/sign-up');
+        this.props.history.push('/dashboard');
     }
 
     render() {
@@ -26,7 +26,7 @@ export default class LoginPwd extends Component {
         return (
             <div className="container p-0">
             <form>
-                <Link to="/sign-in">
+                <Link to={{ pathname: "/sign-in", state: { name: this.props.location.state.name}}}>
                 <FontAwesomeIcon icon="angle-left" size="2x" color="#0696d7" style={{position: "absolute"}}/>
                 </Link>
                 <h3 className="text-center p-0">Welcome</h3>

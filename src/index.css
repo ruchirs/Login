@@ -100,6 +100,18 @@ body, html, .App, #root, .wrapper {
   color: #808080;
 }
 
+.toast-message {
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000;
+  background-color: #38abdf;
+  opacity: 0.7;
+  border-radius: 4px;
+  padding: 20px;
+  top: 12px;
+  text-align: center;
+}
+
 @media only screen and (max-width: 600px) {
   .inner-block {
     width: 100%;

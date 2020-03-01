@@ -13,6 +13,7 @@ export default class SignUp extends Component {
             rePassword:'',
             username:'',
             reUsername:'',
+            invalidForm: true,
             isError: {
                 firstName: '',
                 lastName: '',
@@ -31,9 +32,8 @@ export default class SignUp extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-
         if (formValid(this.state)) {
-            console.log(this.state)
+            this.props.history.push({ pathname: "/sign-in", state: { successful: true}})
         } else {
             console.log("Form is invalid!");
         }
@@ -41,9 +41,9 @@ export default class SignUp extends Component {
 
     formValChange = e => {
         // e.preventDefault();
-        console.log('e.target', e.target)
+        //console.log('e.target', e.target)
         const { name, value } = e.target;
-        console.log('value', value)
+        //console.log('value', value)
         let isError = { ...this.state.isError };
 
         switch (name) {
@@ -60,18 +60,18 @@ export default class SignUp extends Component {
                     value.length < 4 ? "Please enter a valid username" : "";
                 break;
             case "reUsername":
-                const {username, reUsername} = this.state
-                console.log(username == reUsername)
+                const { username } = this.state
                 isError.reUsername =
-                    (username === reUsername) ? "" : "Please enter the same username";
+                    (username === e.target.value) ? "" : "Please enter the same username";
                 break;
             case "password":
                 isError.password =
                     value.length < 4 ? "Please enter a password" : "";
                 break;
             case "rePassword":
+                const { password } = this.state
                 isError.rePassword =
-                    value.length < 4 ? "Please enter the same password" : "";
+                    (password === e.target.value) ? "" :"Please enter the same password";
                 break;
             default:
                 break;
@@ -154,7 +154,7 @@ export default class SignUp extends Component {
 
 const formValid = ({ isError, ...rest }) => {
     let isValid = false;
-    console.log('form-valid');
+    // console.log('form-valid');
     
     Object.values(isError).forEach(val => {
         console.log('val', val);
@@ -167,7 +167,7 @@ const formValid = ({ isError, ...rest }) => {
     });
 
     Object.values(rest).forEach(val => {
-        console.log('val2', val);
+        // console.log('val2', val);
         
         if (!val) {
             isValid = false

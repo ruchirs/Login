@@ -7,6 +7,8 @@ import SignUp from './components/SignUp';
 import LoginPwd from './components/LoginPwd';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faAngleLeft, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import Dashboard from './components/Dashboard';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 library.add(faAngleLeft, faCoffee)
 
@@ -21,6 +23,7 @@ function App() {
             <Route path="/sign-in" component={Login} />
             <Route path="/log-in" component={LoginPwd} />
             <Route path="/sign-up" component={SignUp} />
+            <Route path="/dashboard" component={Dashboard} />
           </Switch>
         </div>
       </div>
