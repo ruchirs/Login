@@ -10,6 +10,7 @@ export default class Dashboard extends Component {
                 <Link to="/sign-in" className="mt-2">
                     <button>Logout</button>
                 </Link>
+                <Footer />
             </div>
         )
     }
