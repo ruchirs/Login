@@ -126,7 +126,10 @@ export default class Login extends Component {
                      </div> */}
                      <div className="form-group">
                      <label>Username</label>
-                     <input type="text" className={isError.username.length > 0 ? "is-invalid form-control" : "form-control"} onChange={(e) => this.handleChange(e)} name="username"/>
+                     <input type="text" 
+                     className={isError.username.length > 0 ? "is-invalid form-control" : "form-control"} 
+                     onChange={(e) => this.handleChange(e)} 
+                     name="username"/>
                      {isError.username.length > 0 && (
                          <span className="invalidInput">{isError.username}</span>
                      )}
